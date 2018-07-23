@@ -1,0 +1,86 @@
+<h2>Test sur input</h2>
+<div class="container-col">
+  <form action="" class="example-form">
+    <mat-form-field>
+      <input matInput
+             name="login"
+             #loginInput="ngModel"
+             [(ngModel)]="login"
+             [errorStateMatcher]="customErrorStateMatcher"
+             placeholder="Login"
+             minlength="6"
+             maxlength="16"
+             required>
+      <!--Message d'erreurs sur controle-->
+      <mat-error *ngIf="loginInput.errors?.required">Merci de saisir votre login</mat-error>
+      <mat-error *ngIf="loginInput.errors?.minlength">Votre login doit comporter 6 caractères minimum</mat-error>
+      <mat-hint align="end">{{login.length}}/16</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput
+             name="password"
+             type="password"
+             #passwordInput="ngModel"
+             [(ngModel)]="password"
+             placeholder="Mot de passe"
+             minlength="6"
+             required>
+      <!--Message d'erreurs sur controle-->
+      <mat-error *ngIf="passwordInput.errors?.required">Merci de saisir votre mot de passe</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+
+<h2>DatePicker la base</h2>
+<mat-form-field>
+  <input matInput [matDatepicker]="datepicker">
+  <mat-datepicker-toggle matSuffix [for]="datepicker">
+  </mat-datepicker-toggle>
+  <mat-datepicker #datepicker [startAt]="startDate"></mat-datepicker>
+</mat-form-field>
+
+<h2>DATATABLE TEST</h2>
+
+<div class="mat-elevation-z4">
+  <mat-table [dataSource]="dataSource" matSort>
+    <!--déginition d'une colonne-->
+    <ng-container matColumnDef="name">
+      <!--définition du header-->
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Nom
+      </mat-header-cell>
+      <!--Contenu des cellules en boucle-->
+      <mat-cell *matCellDef="let operator">
+        {{operator.name}}
+      </mat-cell>
+    </ng-container>
+
+    <!--déginition d'une colonne-->
+    <ng-container matColumnDef="category">
+      <!--définition du header-->
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Catégorie
+      </mat-header-cell>
+      <!--Contenu des cellules en boucle-->
+      <mat-cell *matCellDef="let operator">
+        {{operator.category}}
+      </mat-cell>
+    </ng-container>
+
+    <!--déginition d'une colonne-->
+    <ng-container matColumnDef="views">
+      <!--définition du header-->
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Vues
+      </mat-header-cell>
+      <!--Contenu des cellules en boucle-->
+      <mat-cell *matCellDef="let operator">
+        {{operator.views}}
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="['name','category','views']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['name', 'category', 'views']"></mat-row>
+  </mat-table>
+  <!--Paginator-->
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[5,10,25]"></mat-paginator>
+</div>
