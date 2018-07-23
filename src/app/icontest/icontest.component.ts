@@ -20,7 +20,7 @@ export class CustomErrorStateMatcher implements ErrorStateMatcher {
 
 @Component({
   selector: 'app-icontest',
-  // animations : [''],
+  // animations : ['growInOut'],
   templateUrl: './icontest.component.html',
   providers: [CustomErrorStateMatcher],
   styleUrls: ['./icontest.component.scss']
