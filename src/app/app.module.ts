@@ -8,6 +8,7 @@ import {AppMaterialModule} from './modules/app-material.module';
 import { IcontestComponent } from './icontest/icontest.component';
 import {FormsModule} from '@angular/forms';
 import {MatPaginatorModule, MatSortModule} from '@angular/material';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {MatPaginatorModule, MatSortModule} from '@angular/material';
     AppMaterialModule,
     FormsModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
